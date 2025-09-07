@@ -10300,3 +10300,4 @@ class FCMultiWork:
 	def stop(self):
 		"""停止"""
 		self.isRunning = False
+
