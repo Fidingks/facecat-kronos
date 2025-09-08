@@ -56,6 +56,8 @@
 ### 训练参数
 ![训练参数](facecat/image/训练参数.png)
 
+### 本地模型目录
+![本地模型](facecat/image/本地模型.png)
 ## 我们的团队
 
 花卷猫量化研究团队的成员均来自国内外金融机构及科技公司的量化部门：
@@ -104,7 +106,7 @@
     python prediction_example.py
     ```
     *   若电脑无兼容的GPU，请使用我们提供的已修改好的CPU版本示例 (`cpu_prediction_example.py`, `cpu_prediction_wo_vol_examples.py`)。
-    *   可能会出现无法加载在线模型，请到https://huggingface.co/NeoQuasar/Kronos-small/tree/main 下载模型放到model目录下
+    *   可能会出现无法加载在线模型，请到https://huggingface.co/NeoQuasar/Kronos-small/tree/main 下载模型放到facecat/model目录下（Kronos-small和Kronos-Tokenizer-base）
     *   运行成功后，可以与在 `figures` 目录下的 `prediction_example.png` 图片进行对比。
 
 4.  **运行 FaceCat-Kronos**
@@ -128,5 +130,6 @@
     *   **预测界面**: 使用日k线进行历史回测或者未来预测
     *   **主界面**: 包含核心的股票列表、分时图、五档行情面板和多周期K线图。
     *   **多K线**: 独立的多周期K线分析面板。
+
 
 
