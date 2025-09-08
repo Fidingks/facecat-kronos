@@ -1,4 +1,4 @@
-﻿# -*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 #! python3
 from facecat import *
 #这里可能需要pip install requests
@@ -739,6 +739,8 @@ def onClickGridCell(grid, row, gridColumn, cell, firstTouch, firstPoint, secondT
 	global currentCode
 	code = row.cells[1].value
 	name = row.cells[2].value
+	chart = findViewByName("preChart", gPaint.views)
+	chart.datas2 = []
 	queryHistoryData(code, name, 0, findMyCharts)
 	queryHistoryData(code, name, 1, findMyCharts)
 	queryHistoryData(code, name, 1440, findMyCharts)
@@ -1526,8 +1528,8 @@ for i in range(0, len(findMyCharts)):
 		chart.topP = 0.9
 		chart.upColor = "rgb(186,56,18)"
 		chart.downColor = "rgb(31,182,177)"
-		chart.upColor2 =  "rgba(188,56,18,100)"
-		chart.downColor2 ="rgba(31,182,177,100)" 
+		chart.upColor2 =  "rgb(245,158,132)"
+		chart.downColor2 ="rgb(131,199,190)" 
 		chart.vScaleTextColor = "rgb(255,255,255)"
 	cycles = []
 	cycles.append("1")
