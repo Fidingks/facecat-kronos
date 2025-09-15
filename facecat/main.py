@@ -67,7 +67,7 @@ def transToChartData(pred_df):
     return data_list
 
 def progress_callback(progress, total):
-	progressDiv = findViewByName("progress", gPaint.views)
+	progressDiv = gPaint.findView("progress")
 	progressDiv.text = str(progress/total)
 	progressDiv.invalidate()
 
@@ -75,9 +75,9 @@ def predict(chart):
 	"""
 	使用历史K线数据对未来进行预测
 	"""
-	preButton = findViewByName("preButton", gPaint.views)
+	preButton = gPaint.findView("preButton")
 	preButton.enabled = False
-	progressDiv = findViewByName("progress", gPaint.views)
+	progressDiv = gPaint.findView("progress")
 	progressDiv.text = "-1"
 	progressDiv.invalidate()
 	preButton.invalidate()
@@ -739,7 +739,7 @@ def onClickGridCell(grid, row, gridColumn, cell, firstTouch, firstPoint, secondT
 	global currentCode
 	code = row.cells[1].value
 	name = row.cells[2].value
-	chart = findViewByName("preChart", gPaint.views)
+	chart =gPaint.findView("preChart")
 	chart.datas2 = []
 	queryHistoryData(code, name, 0, findMyCharts)
 	queryHistoryData(code, name, 1, findMyCharts)
@@ -778,12 +778,12 @@ def onClick(view, firstTouch, firstPoint, secondTouch, secondPoint, clicks):
 	elif view.viewName == "preButton":
 		if view.text == "预测中...":
 			return
-		chart = findViewByName("preChart", gPaint.views)
+		chart = gPaint.findView("preChart")
 		thread = threading.Thread(target=predict_in_thread, args=(chart,))
 		thread.start()
 	elif view.viewType == "menuitem":
 		name = view.viewName
-		chart = findViewByName("preChart", gPaint.views)
+		chart = gPaint.findView("preChart")
 		if name.startswith("mode"):
 			chart.datas2 = []
 			chart.preMode = name.split("_")[1]
@@ -793,8 +793,8 @@ def onClick(view, firstTouch, firstPoint, secondTouch, secondPoint, clicks):
 			chart.datas2 = []
 			chart.pred_len = int(name.split("pred_len_")[1])
 	elif view.viewName == "temperatureUp":
-		chart = findViewByName("preChart", gPaint.views)
-		temperatureDiv = findViewByName("temperatureDiv", gPaint.views)
+		chart = gPaint.findView("preChart")
+		temperatureDiv = gPaint.findView("temperatureDiv")
 		temp = chart.temperature
 		if temp < 100:
 			chart.temperature += 1.0
@@ -804,8 +804,8 @@ def onClick(view, firstTouch, firstPoint, secondTouch, secondPoint, clicks):
 			temperatureDiv.text = "Temp:" + str(toFixed(chart.temperature, 1))
 		temperatureDiv.parent.invalidate()
 	elif view.viewName == "temperatureDown":
-		temperatureDiv = findViewByName("temperatureDiv", gPaint.views)
-		chart = findViewByName("preChart", gPaint.views)
+		temperatureDiv = gPaint.findView("temperatureDiv")
+		chart = gPaint.findView("preChart")
 		temp = chart.temperature
 		if temp > 3:
 			chart.temperature -= 1.0
@@ -815,16 +815,16 @@ def onClick(view, firstTouch, firstPoint, secondTouch, secondPoint, clicks):
 			temperatureDiv.text = "Temp:" + str(toFixed(chart.temperature, 1))
 		temperatureDiv.parent.invalidate()
 	elif view.viewName == "topPUp":
-		topPDiv = findViewByName("topPDiv", gPaint.views)
-		chart = findViewByName("preChart", gPaint.views)
+		topPDiv = gPaint.findView("topPDiv")
+		chart = gPaint.findView("preChart")
 		topP = chart.topP
 		if topP < 1:
 			chart.topP += 0.1
 			topPDiv.text = "topP:" + str(toFixed(chart.topP, 1))
 		topPDiv.parent.invalidate()
 	elif view.viewName == "topPDown":
-		topPDiv = findViewByName("topPDiv", gPaint.views)
-		chart = findViewByName("preChart", gPaint.views)
+		topPDiv = gPaint.findView("topPDiv")
+		chart = gPaint.findView("preChart")
 		topP = chart.topP
 		if topP > 0:
 			chart.topP -= 0.1
@@ -1436,22 +1436,22 @@ elif gPaint.defaultUIStyle == "light":
 	gridStocks.alternateRowColor = "rgb(245,245,245)"
 stockName = "浦发银行"
 
-progressDiv = findViewByName("progress", gPaint.views)
+progressDiv = gPaint.findView("progress")
 progressDiv.onPaint = drawProgressDiv
 
-temperatureUpButton = findViewByName("temperatureUp", gPaint.views)
+temperatureUpButton = gPaint.findView("temperatureUp")
 temperatureUpButton.onPrePaint = drawUpButton
-temperatureDownButton = findViewByName("temperatureDown", gPaint.views)
+temperatureDownButton = gPaint.findView("temperatureDown")
 temperatureDownButton.onPrePaint = drawDownButton
 
-topPUpButton = findViewByName("topPUp", gPaint.views)
+topPUpButton = gPaint.findView("topPUp")
 topPUpButton.onPrePaint = drawUpButton
-topPDownButton = findViewByName("topPDown", gPaint.views)
+topPDownButton = gPaint.findView("topPDown")
 topPDownButton.onPrePaint = drawDownButton
 
-temperatureDiv = findViewByName("temperatureDiv", gPaint.views)
+temperatureDiv = gPaint.findView("temperatureDiv")
 temperatureDiv.onPaint = drawMyDiv
-topPDiv = findViewByName("topPDiv", gPaint.views)
+topPDiv = gPaint.findView("topPDiv")
 topPDiv.onPaint = drawMyDiv
 topPDiv.parent.invalidate()
 findViewsByType("mychart", gPaint.views, findMyCharts)
