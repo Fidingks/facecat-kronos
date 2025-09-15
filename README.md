@@ -56,8 +56,6 @@
 ### 训练参数
 ![训练参数](facecat/image/训练参数.png)
 
-### 本地模型目录
-![本地模型](facecat/image/本地模型.png)
 ## 我们的团队
 
 花卷猫量化研究团队的成员均来自国内外金融机构及科技公司的量化部门：
@@ -79,7 +77,7 @@
 
 在开始之前，请先阅读以下几点，这能帮助您避免很多不必要的麻烦：
 
-1.  **Python 版本**: 官方建议使用 Python 3.10+。
+1.  **Python 版本**: 建议使用 Python 3.10+，3.9版本在windows下可能无法调用模型文件。
 2.  **运行平台**: 原始代码默认使用 NVIDIA CUDA GPU (`device="cuda:0"`)。如果您是 Mac 或没有 NVIDIA 显卡的 Windows/Linux 用户，直接运行会报错。教程附有修改后的代码，使CPU也能顺畅运行。
 3.  **依赖安装**: `requirements.txt` 中可能遗漏了间接依赖 `safetensors`，我们已在安装步骤中补充。为加速下载，建议使用国内镜像源。
 4.  **运行路径**: 请务必在正确的目录下执行命令，避免出现路径错误。
@@ -106,7 +104,7 @@
     python prediction_example.py
     ```
     *   若电脑无兼容的GPU，请使用我们提供的已修改好的CPU版本示例 (`cpu_prediction_example.py`, `cpu_prediction_wo_vol_examples.py`)。
-    *   可能会出现无法加载在线模型，请到https://huggingface.co/NeoQuasar/Kronos-small/tree/main 下载模型放到facecat/model目录下（Kronos-small和Kronos-Tokenizer-base）
+    *   可能会出现无法加载在线模型，请到https://huggingface.co/NeoQuasar/Kronos-small/tree/main 下载模型放到model目录下
     *   运行成功后，可以与在 `figures` 目录下的 `prediction_example.png` 图片进行对比。
 
 4.  **运行 FaceCat-Kronos**
@@ -130,6 +128,4 @@
     *   **预测界面**: 使用日k线进行历史回测或者未来预测
     *   **主界面**: 包含核心的股票列表、分时图、五档行情面板和多周期K线图。
     *   **多K线**: 独立的多周期K线分析面板。
-
-
 
